@@ -522,7 +522,7 @@ body.modal-active.final-img .scene {
 @-o-keyframes preload{0%,100%{opacity:1}50%{opacity:.3;}100%{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-o-transform:rotate(360deg);transform:rotate(360deg)}}
 @keyframes preload{0%,100%{opacity:1;zoom:1;}50%{opacity:.3;zoom:0.6;}100%{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-o-transform:rotate(360deg);transform:rotate(360deg)}}
 
-.header{position:fixed;top:0;left:0;width:100%;height:0;z-index:99999;padding:10px;padding-bottom:0}.header__btn-close,.header__btn-menu{cursor:pointer}.header__btn-menu{float:left}.header__btn-menu span{background: #ffffff;}
+.header{position:fixed;top:0;left:0;width:100%;height:0;z-index:99999;padding:10px;padding-bottom:0}.header__btn-close,.header__btn-menu{cursor:pointer}.header__btn-menu{float:left;margin-left:10px;}.header__btn-menu span{background: #ffffff;}
 
 .menu-active .header__btn-menu span,.modal-active .header__btn-menu span{
     background:#272e3f;

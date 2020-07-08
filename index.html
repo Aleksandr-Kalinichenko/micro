@@ -397,7 +397,7 @@
 	<script src="js/utils.js"></script>
 	<script src="js/preloader.js"></script>
 	<script src="js/overlay.js"></script>
-	<script src="js/page.js"></script> 
+	<script src="js/page.js"></script>
 	<script src="js/modals.js"></script>
 	<script src="js/points.js?3434355"></script>
 	<script src="js/zoom.js?134444141"></script>
@@ -486,7 +486,7 @@ $(function () {
 // увеличение миниатюры по наведению	
 (function ($) {
     $(document).ready(function() {
-		
+
         $('.xzoom3').xzoom({
 		position: 'lens',
 		lensShape: 'circle',
@@ -664,7 +664,7 @@ $(function () {
             });
 
             $(window).scroll(function(){
-                var isVisible = typeof container !== 'undefined' && container !== null ? $(elem).visible(false, false, 'both', container) : $(elem).visible();
+				var isVisible = typeof container !== 'undefined' && container !== null ? $(elem).visible(false, false, 'both', container) : $(elem).visible();
                 if(isVisible) {
                     disable_scroll();
                     $('#final').addClass('modal--active modal--visible');
@@ -699,10 +699,16 @@ $(function () {
                 },1000);
 
             });
-			
+
         });
 
+		const allBtnCloseModal = document.querySelectorAll(".js-modal-close");
 
+		for (let j = 0; j < allBtnCloseModal.length; j++) {
+			allBtnCloseModal[j].addEventListener("click", function () {
+				$("html, body").animate({ scrollTop: 0 }, 2000);
+			});
+		}
 	</script>
 
 
