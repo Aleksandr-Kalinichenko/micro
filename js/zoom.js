@@ -55,7 +55,7 @@ points=[
     // ['start.png',undefined,true,false,[0.08,0.14,-1,-0.04,0.24],'about'],
     ['about.png','about',true,true,[-0.5,0,500,-0.24,0.03]],
     ['team.png','team',false,false,[0.5,0,1000,0.24,-0.05]],
-    ['attractions.png','attractions',true,false,[-0.55,-0.13,2000,-0.22,0.25]],
+    ['attractions.png','attractions',true,false,[-0.55,-0.13,1500,-0.22,0.25]],
     ['contact.png','contact',false,true,[0.35,-0.18,1990,0.16,0.14]]],
 dimensions={
 fov:500,
