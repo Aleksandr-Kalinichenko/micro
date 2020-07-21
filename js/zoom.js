@@ -1,5 +1,5 @@
 var zoom=(function($){
-    
+
 var selectors={window:window,
     body:'body',
     wrapper:'.wrapper',
@@ -48,10 +48,10 @@ content={
     'contact':[0.3,0.3,2000],
     'end':[0,0,2240]},
 points=[
-    
-    
+
+
     //  ['Путь.png','Название',false,false,[положение по х, положение по у, положение по z, положение по х (mobile), положение по y (mobile)]],
-    
+
     // ['start.png',undefined,true,false,[0.08,0.14,-1,-0.04,0.24],'about'],
     ['about.png','about',true,true,[-0.5,0,500,-0.24,0.03]],
     ['team.png','team',false,false,[0.5,0,1000,0.24,-0.05]],
@@ -74,7 +74,7 @@ points:{
     currentLayer,
     nodes,
     controller;
-    
+
 function setupCanvas(){
     controller=new ScrollMagic();
     canvas=document.getElementById("scene-canvas");
@@ -98,7 +98,7 @@ function setupCanvas(){
             createLayer(layer,'gradient',backgrounds[x][2],backgrounds[x][3],backgrounds[x][4]);
         }
     }
-    
+
     for(var x=0;x<points.length;x++){
         var layer=new Image();
         layer.ltr=points[x][2];
@@ -110,7 +110,7 @@ function setupCanvas(){
         createLayer(layer,'point',points[x][4]);
     }
 }
-    
+
 function setDimensions(){
     var windowWidth=nodes.window.width(),
     windowHeight=nodes.wrapper.outerHeight(),
@@ -141,7 +141,7 @@ nodes.scene.css({
         dimensions.points.label.height=75;
     }
 }
-    
+
 function setupEvents(){
     nodes.window.on('scroll',throttledRender);
     nodes.window.on('resize',function(){
@@ -163,11 +163,11 @@ function setupEvents(){
     nodes.scene.on('click',clickPoint);
     $.subscribe('/page/closeAll',pauseAnimation);
 }
-    
+
 function pauseAnimation(){
     animate=false;
 }
-    
+
 function scrollTo(id,modal){
     var targetZ=content[id][2],
         speed=Math.abs(targetZ- -offsetZ)/ dimensions.fov;
@@ -192,9 +192,9 @@ function scrollTo(id,modal){
 }
 
 function getTilt(offsetZ){var tilt=-offsetZ- tiltStart;tilt=tilt<0?0:Math.pow(tilt,1.3);return tilt;}
-    
+
 var throttledRender=_.throttle(render,1000/30);
-    
+
 function render(){
     offsetZ=-nodes.window.scrollTop();
     offsetZ=offsetZ<=0?offsetZ:0;tilt=getTilt(offsetZ);
@@ -247,15 +247,15 @@ function render(){
         }
     }
 }
-    
+
 function drawPoint(context,point){
-	
+
 	var scale=dimensions.fov/(dimensions.fov+ point.baseCoords[2]+ offsetZ);
 	var side=point.width/2;var x=point.coords[0]+ side/2;var y=point.coords[1];
 	var thickness=dimensions.points.outline*scale*dimensions.pixelRatio;
 	if(utils.isMobile()){x=point.coords[2]+ side/2;y=point.coords[3];
 	}
-	
+
 	var textX=(point.ltr?x+ side+(side*dimensions.points.xAngle):x-(side*dimensions.points.xAngle)-(dimensions.points.label.width*scale*dimensions.pixelRatio))+(10*scale*dimensions.pixelRatio*(point.ltr?1:-1)),
 	active=-offsetZ>=point.display;
 	if(utils.isMobile()){
@@ -281,7 +281,7 @@ function drawPoint(context,point){
 			point.clickTarget[0]=(textX<=point.coords[0]?textX:point.coords[0]);
 			point.clickTarget[1]=textX>=point.coords[0]?textX+(dimensions.points.label.width*scale*dimensions.pixelRatio):point.clickTarget[1];
 		}
-		
+
 		var highlightOpacity=(-offsetZ- point.display)/ 100;
 		highlightOpacity=highlightOpacity<=1?highlightOpacity:1;
 		context.fillStyle='transparent';
@@ -330,7 +330,7 @@ function drawPoint(context,point){
 	context.lineTo(x,y);
 	context.closePath();
 	context.fill();
-	
+
 	if(!point.targetLayer){
 		var eWidth=dimensions.points.outline*2*scale*dimensions.pixelRatio,
 		eHeight=dimensions.points.outline*7.5*scale*dimensions.pixelRatio,
@@ -366,7 +366,7 @@ function drawPoint(context,point){
 
 	function positionLayer(layer,offsetZ,tilt){
 		var scale=dimensions.fov/(dimensions.fov+ layer.baseCoords[2]+ offsetZ);layer.render=scale>0;switch(layer.type){
-			case'image':layer.width=dimensions.width*scale*layer.baseScale;layer.height=dimensions.height*scale*layer.baseScale+(layer.baseCoords[3]?tilt*0.2:0); 
+			case'image':layer.width=dimensions.width*scale*layer.baseScale;layer.height=dimensions.height*scale*layer.baseScale+(layer.baseCoords[3]?tilt*0.2:0);
 			break;case'point':layer.width=dimensions.points.width*scale*dimensions.pixelRatio;layer.height=dimensions.points.width*scale*dimensions.pixelRatio*dimensions.points.yAngle;break;case'pattern':case'gradient':layer.width=dimensions.width;layer.height=dimensions.height;break;}
 layer.coords=[dimensions.halfWidth-(layer.width/2)+(layer.baseCoords[0]*dimensions.width*scale),dimensions.halfHeight-(layer.height/2)+(layer.baseCoords[1]*dimensions.height*scale)+(tilt*scale)];
 if(layer.type==='point'){layer.coords[2]=dimensions.halfWidth-(layer.width/2)+(layer.baseCoords[3]*dimensions.width*scale);layer.coords[3]=dimensions.halfHeight-(layer.height/2)+(layer.baseCoords[4]*dimensions.height*scale)+(tilt*scale);}
@@ -396,28 +396,28 @@ if(x >= btn_x && x <= btn_x + btn_width) {
 	} else {
 		$('body').css('cursor', 'auto');
 	}
-	
+
 return target;
 }
 
 var throttledSetCursor=_.throttle(setCursor,1000/30);function setCursor(event){var target=getPointTarget(event);animate=target!==false;nodes.scene.toggleClass(classes.pointer,target!==false);}
 function clickPoint(event){
 	var target=getPointTarget(event);
-	
+
 	var x=(event.pageX+-nodes.scene.offset().left)*dimensions.pixelRatio;
 	var y=(event.pageY+-nodes.scene.offset().top)*dimensions.pixelRatio;
-	
+
 	var btn_x = parseInt(localStorage.getItem('btn_x'), 10);
 	var btn_y = parseInt(localStorage.getItem('btn_y'), 10);
 	var btn_width = parseInt(localStorage.getItem('btn_width'), 10);
 	var btn_height = parseInt(localStorage.getItem('btn_height'), 10);
-	
+
 	if(x >= btn_x && x <= btn_x + btn_width) {
 		if(y - 37 >= btn_y && y - 37 <= btn_y + (btn_height * 0.45)) {
 			window.open('http://google.com');
 		}
 	}
-	
+
 	if(target!==false){
 		animate=false;
 		scrollTo(target.targetLayer?target.targetLayer:target.modal,target.modal);

@@ -359,7 +359,7 @@
     
 
 	<div class="psa-clicker-top"></div>
-	<!--<div class="psa-clicker"></div>-->
+	<div class="psa-clicker"></div>
 	
 
     <div class="scene">
@@ -453,25 +453,34 @@ $(function () {
 	
     var $win = $(window);
 	var body = $('body');
+	var clickCounter = 500;
 	
 	// клик в любое место = приближение
-//	$('#scene-canvas').click(function() {
-//		$('html,body').animate({
-//			scrollTop: body.scrollTop()+500},
-//			'slow');
-//	});
+	// $('#scene-canvas').click(function() {
+	// 	$('html,body').animate({
+	// 		scrollTop: body.scrollTop()+500},
+	// 		'slow');
+	// });
 
 	$('.psa-clicker').click(function() {
+		clickCounter += clickCounter;
 		$('html,body').animate({
-			scrollTop: body.scrollTop()+476},
+			scrollTop: body.scrollTop()+clickCounter},
 			'slow');
-	});	
-	
+		if (clickCounter === 4000) {
+			clickCounter = 500;
+		}
+	});
+
 	$('.psa-clicker-top').click(function() {
+		clickCounter += clickCounter;
 		$('html,body').animate({
-			scrollTop: body.scrollTop()+476},
+			scrollTop: body.scrollTop()+clickCounter},
 			'slow');
-	});	
+		if (clickCounter === 4000) {
+			clickCounter = 500;
+		}
+	});
 	 	  
  });
     
@@ -705,6 +714,5 @@ $(function () {
 
 
 </div><!-- #page -->
-
 </body>
 </html>

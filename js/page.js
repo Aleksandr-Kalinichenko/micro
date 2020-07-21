@@ -10,7 +10,7 @@ var page=(function($){
         active=false;
         nodes.body.removeClass(classes.menu);
         $.publish('/overlay/hide');
-    } 
+    }
     else {
         active=true;
         nodes.body.addClass(classes.menu);
@@ -21,11 +21,11 @@ var page=(function($){
 function closeMenu(){
     toggleMenu(null,true);
 }
-    
+
 function removeAlert(){
     nodes.document.find('.alert--thank-you').fadeOut(150);
 }
-    
+
 return {
     init:function(){
         nodes=utils.createNodes(selectors);
@@ -53,7 +53,7 @@ return {
         //     prevText:'',nextText:''
         // });
         // $.subscribe('/modal/redraw',redrawSliders);
-        
+
         // function redrawSliders(event,modal){
         //     var sliders=modal.find('.flexslider');
         //     setTimeout(function(){

@@ -23,7 +23,7 @@ var overlay=(function($){
 				if(alpha){settings.alpha=alpha;}
 				tween();
 			}
-			
+
 function hide(){
 	active=false;
 	tween();
