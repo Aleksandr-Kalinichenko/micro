@@ -359,8 +359,9 @@
     
 
 	<div class="psa-clicker-top"></div>
-	<div class="psa-clicker"></div>
-	
+	<div class="psa-clicker-left"></div>
+	<div class="psa-clicker-right"></div>
+
 
     <div class="scene">
         <canvas id="scene-canvas" class="scene__canvas"></canvas>
@@ -462,7 +463,7 @@ $(function () {
 	// 		'slow');
 	// });
 
-	$('.psa-clicker').click(function() {
+	$('.psa-clicker-left').click(function() {
 		clickCounter += clickCounter;
 		$('html,body').animate({
 			scrollTop: body.scrollTop()+clickCounter},
@@ -471,6 +472,17 @@ $(function () {
 			clickCounter = 500;
 		}
 	});
+
+	$('.psa-clicker-right').click(function() {
+		clickCounter += clickCounter;
+		$('html,body').animate({
+			scrollTop: body.scrollTop()+clickCounter},
+			'slow');
+		if (clickCounter === 4000) {
+			clickCounter = 500;
+		}
+	});
+
 
 	$('.psa-clicker-top').click(function() {
 		clickCounter += clickCounter;

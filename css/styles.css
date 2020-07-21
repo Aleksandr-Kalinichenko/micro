@@ -309,6 +309,32 @@ td.product-thumbnail img.attachment-shop_single.size-shop_single.wp-post-image {
     background:transparent;
 }
 
+.psa-clicker-left {
+    position: fixed;
+    z-index:99;
+    bottom: 0;
+    left: 0;
+    height: 30%;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+    width: 37.5%;
+    background:transparent;
+}
+
+.psa-clicker-right {
+    position: fixed;
+    z-index:99;
+    bottom: 0;
+    right: 0;
+    height: 30%;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+    width: 37.5%;
+    background:transparent;
+}
+
 .psa-clicker-top {
     position: fixed;
 	z-index:99;
