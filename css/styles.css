@@ -314,7 +314,7 @@ td.product-thumbnail img.attachment-shop_single.size-shop_single.wp-post-image {
     z-index:99;
     bottom: 0;
     left: 0;
-    height: 30%;
+    height: 43%;
     -webkit-transition: all .3s;
     -o-transition: all .3s;
     transition: all .3s;
@@ -327,7 +327,7 @@ td.product-thumbnail img.attachment-shop_single.size-shop_single.wp-post-image {
     z-index:99;
     bottom: 0;
     right: 0;
-    height: 30%;
+    height: 45%;
     -webkit-transition: all .3s;
     -o-transition: all .3s;
     transition: all .3s;
@@ -489,6 +489,14 @@ body.modal-active {
     opacity: 1; 
 }
 
+.psa-topper__buy-wrap:hover .psa-topper__buy {
+    opacity: 0;
+}
+
+.psa-topper__buy-wrap:hover .psa-topper__buy.hover {
+    opacity: 1;
+}
+
 .psa-topper__buy{
     background: none;
     border: none;
@@ -498,6 +506,11 @@ body.modal-active {
     top: 128px;
 
     cursor: pointer;
+    transition: opacity .3s;
+}
+
+.psa-topper__buy.hover {
+    opacity: 0;
 }
 
 .psa-topper__buy img{
