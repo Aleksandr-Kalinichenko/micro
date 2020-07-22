@@ -1,5 +1,7 @@
 var zoom=(function($){
 
+var reserveImg = ['btn.png',[0,0.45,100],0.15];
+
 var selectors={window:window,
     body:'body',
     wrapper:'.wrapper',
@@ -36,7 +38,7 @@ images=[
     //['vents.png',[0,-0.37,1300],2.85,0,true],
     ['ps-scope.png',[-0.70,0.70,510],0.85,0,true],
     ['welcome.png',[0,0.25,150],0.3],
-    ['btn.png',[0,0.45,100],0.15]
+    reserveImg
     //['book2.png',[0,0,0],1,[460,490,true]],
     //['book-logo.png',[0,0,0],1,[460,490,true]]
 ],
@@ -125,7 +127,8 @@ function setDimensions(){
 nodes.scene.css({
     'width':width+'px','height':height+'px','margin':'-'+(height/2)+'px 0 0 -'+(width/2)+'px'});
     dimensions.width=canvas.width=nodes.scene.width()*dimensions.pixelRatio;
-    dimensions.height=canvas.height=nodes.scene.height()*dimensions.pixelRatio;dimensions.halfWidth=dimensions.width/2;
+    dimensions.height=canvas.height=nodes.scene.height()*dimensions.pixelRatio;
+    dimensions.halfWidth=dimensions.width/2;
     dimensions.halfHeight=dimensions.height/2;
     nodes.depth.css('height',(dimensions.totalHeight+ nodes.window.height())+'px');
     if(utils.isMobile()){
@@ -137,7 +140,7 @@ nodes.scene.css({
     else {
         dimensions.points.width=90;
         dimensions.points.outline=2.8;
-        dimensions.points.label.width=300;
+        dimensions.points.label.width=310;
         dimensions.points.label.height=75;
     }
 }
@@ -161,6 +164,7 @@ function setupEvents(){
     });
     nodes.scene.on('mousemove',throttledSetCursor);
     nodes.scene.on('click',clickPoint);
+    nodes.scene.on('mousemove',hoverPoint);
     $.subscribe('/page/closeAll',pauseAnimation);
 }
 
@@ -414,7 +418,10 @@ function clickPoint(event){
 
 	if(x >= btn_x && x <= btn_x + btn_width) {
 		if(y - 37 >= btn_y && y - 37 <= btn_y + (btn_height * 0.45)) {
-			window.open('http://google.com');
+            $('html,body').animate({
+                    scrollTop: $("body").scrollTop()+1},
+                'slow');
+            window.open('http://google.com');
 		}
 	}
 
@@ -423,5 +430,27 @@ function clickPoint(event){
 		scrollTo(target.targetLayer?target.targetLayer:target.modal,target.modal);
 		}
 	}
+function hoverPoint(event){
+	var target=getPointTarget(event);
+
+	var x=(event.pageX+-nodes.scene.offset().left)*dimensions.pixelRatio;
+	var y=(event.pageY+-nodes.scene.offset().top)*dimensions.pixelRatio;
+
+	var btn_x = parseInt(localStorage.getItem('btn_x'), 10);
+	var btn_y = parseInt(localStorage.getItem('btn_y'), 10);
+	var btn_width = parseInt(localStorage.getItem('btn_width'), 10);
+	var btn_height = parseInt(localStorage.getItem('btn_height'), 10);
+
+	if(x >= btn_x && x <= btn_x + btn_width) {
+		if(y - 37 >= btn_y && y - 37 <= btn_y + (btn_height * 0.45)) {
+		    if (reserveImg !== ['reserveHover.png',[0,0.45,100],0.15]) {
+                reserveImg = ['reserveHover.png',[0,0.45,100],0.15];
+                // var layer = new Image();
+                // layer.src = imagePath + images[5][0];
+                // createLayer(layer, 'image', images[5][1], images[5][2], images[5][3]);
+            }
+        }
+	}
+}
 function animateScene(){if(animate){throttledRender();}}
 return{init:function(){nodes=utils.createNodes(selectors);setupCanvas();setupEvents();}}})(jQuery);$(function(){zoom.init();});
