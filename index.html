@@ -686,9 +686,15 @@ $(function () {
             });
 
             $(window).scroll(function(){
-				// var isVisible = typeof container !== 'undefined' && container !== null ? $(elem).visible(false, false, 'both', container) : $(elem).visible();
-				var currentScrollWindow = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
-				if(currentScrollWindow === 2190) {
+				var isVisible = typeof container !== 'undefined' && container !== null ? $(elem).visible(false, false, 'both', container) : $(elem).visible();
+				// var currentScrollWindow = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+				// var scrollHeight = Math.max(
+				// 		document.body.scrollHeight, document.documentElement.scrollHeight,
+				// 		document.body.offsetHeight, document.documentElement.offsetHeight,
+				// 		document.body.clientHeight, document.documentElement.clientHeight
+				// );
+
+				if(isVisible) {
                     disable_scroll();
                     $('#final').addClass('modal--active modal--visible');
                     $('body').addClass('modal-active');
