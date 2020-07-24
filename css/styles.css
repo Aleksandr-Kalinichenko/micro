@@ -473,7 +473,7 @@ div#final {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 55px;
+    bottom: 50px;
     z-index: 10;
     width: 200px;
     height: 42px;
@@ -1423,10 +1423,12 @@ table.woocommerce-table.woocommerce-table--order-details.shop_table.order_detail
 @media (max-width: 640px) {
     .psa-topper__buy {
         left: 60px;
+        top: 250px;
     }
 
     .img-hoverToZoom {
         right: 60px;
+        top: 250px;
     }
 }
 
@@ -1441,11 +1443,11 @@ table.woocommerce-table.woocommerce-table--order-details.shop_table.order_detail
     }
 
     .psa-topper__buy {
-        width: 150px;
+        width: 190px;
     }
 
     .img-hoverToZoom {
-        width: 110px;
+        width: 140px;
     }
 }
 
@@ -1459,15 +1461,31 @@ table.woocommerce-table.woocommerce-table--order-details.shop_table.order_detail
     }
 }
 
+@media (max-width: 360px) {
+    .img-hoverToZoom {
+        right: 20px;
+    }
+
+    .psa-topper__buy {
+        left: 20px;
+    }
+}
+
+@media (max-width: 330px) {
+    .psa-topper__buy {
+        width: 180px;
+    }
+}
+
 @media (max-height: 700px) {
     .reserveLink-wrap {
-        bottom: 40px;
+        bottom: 10%;
     }
 }
 
 @media (max-height: 500px) {
     .reserveLink-wrap {
-        bottom: 20px;
+        bottom: 8%;
         width: 130px;
     }
 }
