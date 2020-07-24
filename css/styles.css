@@ -473,7 +473,7 @@ div#final {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 60px;
+    bottom: 55px;
     z-index: 10;
     width: 200px;
     height: 42px;
