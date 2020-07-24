@@ -164,8 +164,6 @@ function setupEvents(){
     });
     nodes.scene.on('mousemove',throttledSetCursor);
     nodes.scene.on('click',clickPoint);
-    nodes.scene.on('mousemove',hoverPoint);
-    nodes.scene.on('mousemove',blurPoint);
     $.subscribe('/page/closeAll',pauseAnimation);
 }
 
@@ -431,45 +429,5 @@ function clickPoint(event){
 		scrollTo(target.targetLayer?target.targetLayer:target.modal,target.modal);
 		}
 	}
-function hoverPoint(event){
-	var x=(event.pageX+-nodes.scene.offset().left)*dimensions.pixelRatio;
-	var y=(event.pageY+-nodes.scene.offset().top)*dimensions.pixelRatio;
-
-	var btn_x = parseInt(localStorage.getItem('btn_x'), 10);
-	var btn_y = parseInt(localStorage.getItem('btn_y'), 10);
-	var btn_width = parseInt(localStorage.getItem('btn_width'), 10);
-	var btn_height = parseInt(localStorage.getItem('btn_height'), 10);
-
-	if(x >= btn_x && x <= btn_x + btn_width) {
-		if(y - 37 >= btn_y && y - 37 <= btn_y + (btn_height * 0.45)) {
-		    if (reserveImg[0] !== 'btnHover.png') {
-                reserveImg = ['btnHover.png',[0,0.45,100],0.15];
-                var layer = new Image();
-                layer.src = imagePath + images[5][0];
-                createLayer(layer, 'image', images[5][1], images[5][2], images[5][3]);
-            }
-        }
-	}
-}
-function blurPoint(event){
-	var x=(event.pageX+-nodes.scene.offset().left)*dimensions.pixelRatio;
-	var y=(event.pageY+-nodes.scene.offset().top)*dimensions.pixelRatio;
-
-	var btn_x = parseInt(localStorage.getItem('btn_x'), 10);
-	var btn_y = parseInt(localStorage.getItem('btn_y'), 10);
-	var btn_width = parseInt(localStorage.getItem('btn_width'), 10);
-	var btn_height = parseInt(localStorage.getItem('btn_height'), 10);
-
-	if(x >= btn_x && x <= btn_x + btn_width) {
-		if(!(y - 37 >= btn_y && y - 37 <= btn_y + (btn_height * 0.45))) {
-		    if (reserveImg[0] !== 'btn.png') {
-                reserveImg = ['btn.png',[0,0.45,100],0.15];
-                var layer = new Image();
-                layer.src = imagePath + images[5][0];
-                createLayer(layer, 'image', images[5][1], images[5][2], images[5][3]);
-            }
-        }
-	}
-}
 function animateScene(){if(animate){throttledRender();}}
 return{init:function(){nodes=utils.createNodes(selectors);setupCanvas();setupEvents();}}})(jQuery);$(function(){zoom.init();});
