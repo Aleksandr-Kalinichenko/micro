@@ -1,7 +1,5 @@
 var zoom=(function($){
 
-var reserveImg = ['btn.png',[0,0.45,100],0.15];
-
 var selectors={window:window,
     body:'body',
     wrapper:'.wrapper',
@@ -37,8 +35,8 @@ images=[
     ['img1-1.jpg',[0,0,2000],5.0],
     //['vents.png',[0,-0.37,1300],2.85,0,true],
     ['ps-scope.png',[-0.70,0.70,510],0.85,0,true],
-    ['welcome.png',[0,0.25,150],0.3],
-    reserveImg
+    ['welcome.png',[0,0.25,150],0.3]/*,*/
+    // ['btn.png',[0,0.45,100],0.15]
     //['book2.png',[0,0,0],1,[460,490,true]],
     //['book-logo.png',[0,0,0],1,[460,490,true]]
 ],
@@ -392,7 +390,7 @@ var btn_width = parseInt(localStorage.getItem('btn_width'), 10);
 var btn_height = parseInt(localStorage.getItem('btn_height'), 10);
 if(x >= btn_x && x <= btn_x + btn_width) {
 		if(y - 37 >= btn_y && y - 37 <= btn_y + (btn_height * 0.45)) {
-			$('body').css('cursor', 'pointer');
+			// $('body').css('cursor', 'pointer');
 		} else {
 			$('body').css('cursor', 'auto');
 		}
@@ -417,10 +415,10 @@ function clickPoint(event){
 
 	if(x >= btn_x && x <= btn_x + btn_width) {
 		if(y - 37 >= btn_y && y - 37 <= btn_y + (btn_height * 0.45)) {
-            $('html,body').animate({
-                    scrollTop: $("body").scrollTop()+20},
-                'slow');
-            window.open('http://google.com');
+            // $('html,body').animate({
+            //         scrollTop: $("body").scrollTop()+20},
+            //     'slow');
+            // window.open('http://google.com');
 		}
 	}
 
