@@ -1488,7 +1488,7 @@ table.woocommerce-table.woocommerce-table--order-details.shop_table.order_detail
 
 @media (max-width: 640px) {
     .psa-topper__buy {
-        left: 60px;
+        left: 140px;
         top: 250px;
     }
 
@@ -1523,17 +1523,13 @@ table.woocommerce-table.woocommerce-table--order-details.shop_table.order_detail
     }
 
     .psa-topper__buy {
-        left: 30px;
+        left: 120px;
     }
 }
 
 @media (max-width: 360px) {
     .img-hoverToZoom {
         right: 20px;
-    }
-
-    .psa-topper__buy {
-        left: 20px;
     }
 }
 
