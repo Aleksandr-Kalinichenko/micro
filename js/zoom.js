@@ -1,79 +1,111 @@
-var zoom=(function($){
+var zoom=(function($) {
 
-var selectors={window:window,
-    body:'body',
-    wrapper:'.wrapper',
-    scene:'.scene',
-    depth:'.depth',
-    anchors:'a[href^="#"]'},
-    classes={activeAnchor:'anchor--active',pointer:'scene--pointer'},
-    canvas,context,layers=[],
-    imagePath='images/scene/',
-    totalImages,
-    loaded=0,
-    tiltStart=2500,
-    speed=1000,
-backgrounds=[
+    var selectors = {
+            window: window,
+            body: 'body',
+            wrapper: '.wrapper',
+            scene: '.scene',
+            depth: '.depth',
+            anchors: 'a[href^="#"]'
+        },
+        classes = {activeAnchor: 'anchor--active', pointer: 'scene--pointer'},
+        canvas, context, layers = [],
+        imagePath = 'images/scene/',
+        totalImages,
+        loaded = 0,
+        tiltStart = 2500,
+        speed = 1000,
+        backgrounds = [
 //    ['bg-blur.jpg',[],[0,0,5500],1,[0,0]],
-    //['',['#03243b','#65a4be',0.5],[0,0,5000],1,[300,1900]],
-    //['space.jpg',[],[0,0,4500],1,[1900,2500,false,0.3]]
-],
-images=[
-    //['top.jpg',[0,0,2600,false,true],3,[2200,2221]],
-    //['s3-back.png',[0,0,2900,true],3.63,[-2500,2000]],
-    //['s3-mid.png',[0.075,0,2400,true],2.5,[-2000,2000]],
-    //['s2-mid.png',[-0.47,0,1750],1.84,[549,550]],
-    //['clouds.png',[-0.7,0.47,1650],1.4,[1800,1900,true]],
-    //['s2-front.png',[0.3,0,1480],1.7],
-    //['s1-back.png',[0.09,0.045,1100],1.6,[119,120]],
-    //['clouds.png',[0,0.1,1050],1.8,[1300,1450,true]],
-    //['s1-mid.png',[0.2,0,800],1.55,[99,100]],
-    //['micro.png',[0,0,1450],0.27],
-    ['img4.png',[0,0,1997],0.5109],
-    ['img3.jpg',[0,0,1998],1.559],
-    // ['img2.png',[0,0,1999],3.3],
-    ['img1-1.jpg',[0,0,2000],5.0],
-    //['vents.png',[0,-0.37,1300],2.85,0,true],
-    ['ps-scope.png',[-0.70,0.70,510],0.85,0,true],
-    ['welcome.png',[0,0.25,150],0.3]/*,*/
-    // ['btn.png',[0,0.45,100],0.15]
-    //['book2.png',[0,0,0],1,[460,490,true]],
-    //['book-logo.png',[0,0,0],1,[460,490,true]]
-],
-content={
-    'start':[0.3,0.3,0],
-    'about':[0.3,0.3,500],
-    'team':[0.3,0.3,1000],
-    'attractions':[0.3,0.3,1500],
-    'contact':[0.3,0.3,2000],
-    'end':[0,0,2240]},
-points=[
+            //['',['#03243b','#65a4be',0.5],[0,0,5000],1,[300,1900]],
+            //['space.jpg',[],[0,0,4500],1,[1900,2500,false,0.3]]
+        ],
+        images = [
+            //['top.jpg',[0,0,2600,false,true],3,[2200,2221]],
+            //['s3-back.png',[0,0,2900,true],3.63,[-2500,2000]],
+            //['s3-mid.png',[0.075,0,2400,true],2.5,[-2000,2000]],
+            //['s2-mid.png',[-0.47,0,1750],1.84,[549,550]],
+            //['clouds.png',[-0.7,0.47,1650],1.4,[1800,1900,true]],
+            //['s2-front.png',[0.3,0,1480],1.7],
+            //['s1-back.png',[0.09,0.045,1100],1.6,[119,120]],
+            //['clouds.png',[0,0.1,1050],1.8,[1300,1450,true]],
+            //['s1-mid.png',[0.2,0,800],1.55,[99,100]],
+            //['micro.png',[0,0,1450],0.27],
+            ['img4.png', [0, 0, 1997], 0.5109],
+            ['img3.jpg', [0, 0, 1998], 1.559],
+            // ['img2.png',[0,0,1999],3.3],
+            ['img1-1.jpg', [0, 0, 2000], 5.0],
+            //['vents.png',[0,-0.37,1300],2.85,0,true],
+            ['ps-scope.png', [-0.70, 0.70, 510], 0.85, 0, true],
+            ['welcome.png', [0, 0.25, 150], 0.3]/*,*/
+            // ['btn.png',[0,0.45,100],0.15]
+            //['book2.png',[0,0,0],1,[460,490,true]],
+            //['book-logo.png',[0,0,0],1,[460,490,true]]
+        ],
+        content = {
+            'start': [0.3, 0.3, 0],
+            'about': [0.3, 0.3, 500],
+            'team': [0.3, 0.3, 1000],
+            'attractions': [0.3, 0.3, 1500],
+            'contact': [0.3, 0.3, 2000],
+            'end': [0, 0, 2240]
+        },
+        points = [
 
 
-    //  ['Путь.png','Название',false,false,[положение по х, положение по у, положение по z, положение по х (mobile), положение по y (mobile)]],
+            //  ['Путь.png','Название',false,false,[положение по х, положение по у, положение по z, положение по х (mobile), положение по y (mobile)]],
+            // ['start.png',undefined,true,false,[0.08,0.14,-1,-0.04,0.24],'about'],
+            ['about.png', 'about', true, true, [-0.5, 0, 500, -0.30, -0.2]],
+            ['team.png', 'team', false, false, [0.5, 0, 1000, 0.30, -0.1]],
+            ['attractions.png', 'attractions', true, false, [-0.55, -0.13, 1500, -0.27, 0.25]],
+            ['contact.png', 'contact', false, true, [0.35, -0.18, 1990, 0.20, 0.14]]],
+        dimensions = {
+            fov: 500,
+            totalHeight: 2190,
+            pixelRatio: window.devicePixelRatio > 1 ? 1.6 : 1,
+            points: {
+                width: 90,
+                outline: 2.8,
+                xAngle: 0.5,
+                yAngle: 0.86,
+                progress: 0,
+                label: {width: 250, height: 65}
+            }
+        },
+        animate = false,
+        enabled = false,
+        offsetZ = 0,
+        currentLayer,
+        nodes,
+        controller;
 
-    // ['start.png',undefined,true,false,[0.08,0.14,-1,-0.04,0.24],'about'],
-    ['about.png','about',true,true,[-0.5,0,500,-0.24,0.03]],
-    ['team.png','team',false,false,[0.5,0,1000,0.24,-0.05]],
-    ['attractions.png','attractions',true,false,[-0.55,-0.13,1500,-0.22,0.25]],
-    ['contact.png','contact',false,true,[0.35,-0.18,1990,0.16,0.14]]],
-dimensions={
-fov:500,
-totalHeight:2190,
-pixelRatio:window.devicePixelRatio>1?1.6:1,
-points:{
-    width:90,
-    outline:2.8,
-    xAngle:0.5,
-    yAngle:0.86,
-    progress:0,
-    label:{width:250,height:65}}},
-    animate=false,
-    enabled=false,
-    offsetZ=0,
-    currentLayer,
-    nodes,
-    controller;
+if (document.documentElement.clientWidth > 340 && document.documentElement.clientWidth <= 500) {
+    points = [
+        //  ['Путь.png','Название',false,false,[положение по х, положение по у, положение по z, положение по х (mobile), положение по y (mobile)]],
+        // ['start.png',undefined,true,false,[0.08,0.14,-1,-0.04,0.24],'about'],
+        ['about.png','about',true,true,[-0.5,0,500,-0.30,-0.2]],
+        ['team.png','team',false,false,[0.5,0,700,0.30,-0.1]],
+        ['attractions.png','attractions',true,false,[-0.55,-0.13,1000,-0.27,0.1]],
+        ['contact.png','contact',false,true,[0.35,-0.18,1300,0.20,0]]
+    ];
+    content = {
+        'start': [0.3, 0.3, 0],
+        'about': [0.3, 0.3, 500],
+        'team': [0.3, 0.3, 700],
+        'attractions': [0.3, 0.3, 1000],
+        'contact': [0.3, 0.3, 1300],
+        'end': [0, 0, 2240]
+    };
+} else if (document.documentElement.clientWidth <= 340) {
+    points = [
+        //  ['Путь.png','Название',false,false,[положение по х, положение по у, положение по z, положение по х (mobile), положение по y (mobile)]],
+        // ['start.png',undefined,true,false,[0.08,0.14,-1,-0.04,0.24],'about'],
+        ['about.png','about',true,true,[-0.5,0,500,-0.25,-0.2]],
+        ['team.png','team',false,false,[0.5,0,700,0.30,-0.1]],
+        ['attractions.png','attractions',true,false,[-0.55,-0.13,1000,-0.27,0.1]],
+        ['contact.png','contact',false,true,[0.35,-0.18,1300,0.20,0]]
+    ];
+}
 
 function setupCanvas(){
     controller=new ScrollMagic();
@@ -396,7 +428,7 @@ if(x >= btn_x && x <= btn_x + btn_width) {
 		}
 	} else {
 		$('body').css('cursor', 'auto');
-	}
+    }
 
 return target;
 }

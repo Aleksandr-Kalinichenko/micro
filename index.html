@@ -392,9 +392,6 @@
 		</span>
 	</div>
 </div>
-
-</div>
-    
 <div class="depth"><div class="view-element"></div></div>
 
     
@@ -482,17 +479,19 @@ $(function () {
 	
 	// клик в любое место = приближение
 	$('#scene-canvas').click(function() {
-		setTimeout(function () {
+		function scrollWhenClick () {
 			if (window.pageYOffset === 0 || window.pageYOffset === 1000 || window.pageYOffset === 2000) {
 				clickCounter += clickCounter;
 				$('html,body').animate({
 							scrollTop: body.scrollTop()+clickCounter},
 						'slow');
-				if (clickCounter === 4000) {
+				if (clickCounter === 4000 || window.pageYOffset === 0) {
 					clickCounter = 500;
 				}
 			}
-		}, 50);
+		}
+
+		setTimeout(scrollWhenClick, 50);
 	});
 
 	// $('.psa-clicker-left').click(function() {
@@ -689,79 +688,79 @@ $(function () {
 
 <script type="text/javascript" src="js/jquery.visible.min.js"></script>
 
-	<script>
-        // событие по появлению обьекта
-        var elem = $('.view-element');
-        var container = $('.depth');
+<script>
+	// событие по появлению обьекта
+	var elem = $('.view-element');
+	var container = $('.depth');
 
-        $(document).ready(function(){
+	$(document).ready(function(){
 
-            // ссылка на последний пункт меню (final)
-            $('.final').click(function() {
-                $("html, body").animate({ scrollTop: $(document).height() }, 1000);
-                $('body').removeClass('menu-active');
-                $('#overlay').removeClass('overlay--active');
-                $('.modal').removeClass('modal--active modal--visible');
-                $('body').removeClass('modal-active');
-                $('.scene').removeClass('psa-blur');
-            });
+		// ссылка на последний пункт меню (final)
+		$('.final').click(function() {
+			$("html, body").animate({ scrollTop: $(document).height() }, 1000);
+			$('body').removeClass('menu-active');
+			$('#overlay').removeClass('overlay--active');
+			$('.modal').removeClass('modal--active modal--visible');
+			$('body').removeClass('modal-active');
+			$('.scene').removeClass('psa-blur');
+		});
 
-            $(window).scroll(function(){
-				var isVisible = typeof container !== 'undefined' && container !== null ? $(elem).visible(false, false, 'both', container) : $(elem).visible();
-				// var currentScrollWindow = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
-				// var scrollHeight = Math.max(
-				// 		document.body.scrollHeight, document.documentElement.scrollHeight,
-				// 		document.body.offsetHeight, document.documentElement.offsetHeight,
-				// 		document.body.clientHeight, document.documentElement.clientHeight
-				// );
+		$(window).scroll(function(){
+			var isVisible = typeof container !== 'undefined' && container !== null ? $(elem).visible(false, false, 'both', container) : $(elem).visible();
+			// var currentScrollWindow = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+			// var scrollHeight = Math.max(
+			// 		document.body.scrollHeight, document.documentElement.scrollHeight,
+			// 		document.body.offsetHeight, document.documentElement.offsetHeight,
+			// 		document.body.clientHeight, document.documentElement.clientHeight
+			// );
 
-				if(isVisible) {
-                    disable_scroll();
-                    $(".reserveBtn-wrap").addClass("noVisible");
-                    $('#final').addClass('modal--active modal--visible');
-                    $('body').addClass('modal-active');
-                    $('.scene').addClass('psa-blur');
-                    window.setTimeout('psaAnimation()',500);
-                    // спрятать стандартный крестик
-                    $('.js-modal-close').hide();
-                    // показать новый крестик
-                    //$('header.header').append('<a class="psa-btn-close"><span></span><span></span></a>');
-                    $('.psa-btn-close').show();
+			if(isVisible) {
+				disable_scroll();
+				$(".reserveBtn-wrap").addClass("noVisible");
+				$('#final').addClass('modal--active modal--visible');
+				$('body').addClass('modal-active');
+				$('.scene').addClass('psa-blur');
+				window.setTimeout('psaAnimation()',500);
+				// спрятать стандартный крестик
+				$('.js-modal-close').hide();
+				// показать новый крестик
+				//$('header.header').append('<a class="psa-btn-close"><span></span><span></span></a>');
+				$('.psa-btn-close').show();
 
-                    // прячем элемент
-                    elem.hide();
+				// прячем элемент
+				elem.hide();
 
-                }
-            });
+			}
+		});
 
-            // при клике на последний новый крестик будет отдаление на начало
-            $('.psa-btn-close').click(function() {
-				$(".reserveBtn-wrap").removeClass("noVisible");
-				$('#final').removeClass('modal--active modal--visible');
-                $('body').removeClass('modal-active final-img');
-                $('.scene').removeClass('psa-blur');
-                $('.psa-topper').removeClass('psa-anim');
-                $("html, body").animate({ scrollTop: 0 }, 2000, function(){
-                    enable_scroll();
-                });
-                $('.psa-btn-close').hide();
-                window.setTimeout(function(){
-                    // показывем элемент
-                    elem.show();
-                },1000);
-
-            });
-
-        });
-
-		const allBtnCloseModal = document.querySelectorAll(".js-modal-close");
-
-		for (let j = 0; j < allBtnCloseModal.length; j++) {
-			allBtnCloseModal[j].addEventListener("click", function () {
-				$("html, body").animate({ scrollTop: 0 }, 2000);
+		// при клике на последний новый крестик будет отдаление на начало
+		$('.psa-btn-close').click(function() {
+			$(".reserveBtn-wrap").removeClass("noVisible");
+			$('#final').removeClass('modal--active modal--visible');
+			$('body').removeClass('modal-active final-img');
+			$('.scene').removeClass('psa-blur');
+			$('.psa-topper').removeClass('psa-anim');
+			$("html, body").animate({ scrollTop: 0 }, 2000, function(){
+				enable_scroll();
 			});
-		}
-	</script>
+			$('.psa-btn-close').hide();
+			window.setTimeout(function(){
+				// показывем элемент
+				elem.show();
+			},1000);
+
+		});
+
+	});
+
+	const allBtnCloseModal = document.querySelectorAll(".js-modal-close");
+
+	allBtnCloseModal.forEach(item => {
+		item.addEventListener("click", function () {
+			$("html, body").animate({ scrollTop: 0 }, 2000);
+		});
+	});
+</script>
 
 
 </div><!-- #page -->

@@ -15,7 +15,6 @@ var modals=(function($){
         nodes;
     
     function show(event,id){
-
         var modal=$('#'+ id);
         $.publish('/page/closeAll');
         $.publish('/modal/redraw',[modal]);

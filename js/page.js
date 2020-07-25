@@ -71,4 +71,5 @@ return {
             event.stopPropagation();});
             $.subscribe('/page/closeAll',removeAlert);
         }
-}})(jQuery);$(function(){page.init();});
+}})(jQuery);
+$(function(){page.init();});
