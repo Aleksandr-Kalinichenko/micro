@@ -417,7 +417,7 @@
 	<script src="js/zoom.js?134444141"></script>
 <!-- 	<script src="js/contact.js"></script> -->
 	<script src="js/xzoom.min.js"></script>
-	<script src="js/jquery.hammer.min.js"></script>
+<!--	<script src="js/libs/hammer.min.js"></script>-->
 	
 <script>
 var $ = jQuery.noConflict();
@@ -544,7 +544,7 @@ $(function () {
         //Интеграция с hammer.js
         var isTouchSupported = 'ontouchstart' in window;
 
-        if (isTouchSupported) {
+        if (false) {
             //Если сенсорное устройство
             $('.xzoom, .xzoom2, .xzoom3, .xzoom4, .xzoom5').each(function(){
                 var xzoom = $(this).data('xzoom');
