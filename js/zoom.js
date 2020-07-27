@@ -79,32 +79,23 @@ var zoom=(function($) {
         nodes,
         controller;
 
-if (document.documentElement.clientWidth > 340 && document.documentElement.clientWidth <= 500) {
+if (document.documentElement.clientWidth <= 800) {
     points = [
         //  ['Путь.png','Название',false,false,[положение по х, положение по у, положение по z, положение по х (mobile), положение по y (mobile)]],
         // ['start.png',undefined,true,false,[0.08,0.14,-1,-0.04,0.24],'about'],
         ['about.png','about',true,true,[-0.5,0,500,-0.30,-0.2]],
-        ['team.png','team',false,false,[0.5,0,700,0.30,-0.1]],
+        ['team.png','team',false,false,[0.5,0,500,0.30,-0.2]],
         ['attractions.png','attractions',true,false,[-0.55,-0.13,1000,-0.27,0.1]],
-        ['contact.png','contact',false,true,[0.35,-0.18,1300,0.20,0]]
+        ['contact.png','contact',false,true,[0.35,-0.18,1000,0.27,0.1]]
     ];
     content = {
         'start': [0.3, 0.3, 0],
         'about': [0.3, 0.3, 500],
-        'team': [0.3, 0.3, 700],
+        'team': [0.3, 0.3, 500],
         'attractions': [0.3, 0.3, 1000],
-        'contact': [0.3, 0.3, 1300],
+        'contact': [0.3, 0.3, 1000],
         'end': [0, 0, 2240]
     };
-} else if (document.documentElement.clientWidth <= 340) {
-    points = [
-        //  ['Путь.png','Название',false,false,[положение по х, положение по у, положение по z, положение по х (mobile), положение по y (mobile)]],
-        // ['start.png',undefined,true,false,[0.08,0.14,-1,-0.04,0.24],'about'],
-        ['about.png','about',true,true,[-0.5,0,500,-0.25,-0.2]],
-        ['team.png','team',false,false,[0.5,0,700,0.30,-0.1]],
-        ['attractions.png','attractions',true,false,[-0.55,-0.13,1000,-0.27,0.1]],
-        ['contact.png','contact',false,true,[0.35,-0.18,1300,0.20,0]]
-    ];
 }
 
 function setupCanvas(){
