@@ -85,8 +85,8 @@ if (document.documentElement.clientWidth <= 800) {
         // ['start.png',undefined,true,false,[0.08,0.14,-1,-0.04,0.24],'about'],
         ['about.png','about',true,true,[-0.5,0,500,-0.30,-0.2]],
         ['team.png','team',false,false,[0.5,0,500,0.30,-0.2]],
-        ['attractions.png','attractions',true,false,[-0.55,-0.13,1000,-0.27,0.1]],
-        ['contact.png','contact',false,true,[0.35,-0.18,1000,0.27,0.1]]
+        ['attractions.png','attractions',true,false,[-0.55,-0.13,800,-0.27,0.1]],
+        ['contact.png','contact',false,true,[0.35,-0.18,800,0.27,0.1]]
     ];
     content = {
         'start': [0.3, 0.3, 0],
