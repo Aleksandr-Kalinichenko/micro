@@ -541,16 +541,18 @@ $(function () {
 		adaptive:true
 		});
 
-        //Integration with hammer.js
+        //Интеграция с hammer.js
         var isTouchSupported = 'ontouchstart' in window;
 
+        alert(isTouchSupported);
+
         if (isTouchSupported) {
-            //If touch device
+            //Если сенсорное устройство
             $('.xzoom, .xzoom2, .xzoom3, .xzoom4, .xzoom5').each(function(){
                 var xzoom = $(this).data('xzoom');
                 xzoom.eventunbind();
             });
-            
+
             // $('.xzoom, .xzoom2, .xzoom3').each(function() {
             //     var xzoom = $(this).data('xzoom');
             //     $(this).hammer().on("tap", function(event) {
@@ -613,7 +615,7 @@ $(function () {
             xzoom.openzoom(event);
             });
         });
-        
+
         $('.xzoom5').each(function() {
             var xzoom = $(this).data('xzoom');
             $(this).hammer().on("tap", function(event) {
@@ -658,17 +660,17 @@ $(function () {
         });
 
         } else {
-            //If not touch device
+            //Если не сенсорное устройство
 
-            //Integration with fancybox plugin
+            //Интеграция с плагином fancybox
             $('#xzoom-fancy').bind('click', function(event) {
                 var xzoom = $(this).data('xzoom');
                 xzoom.closezoom();
                 $.fancybox.open(xzoom.gallery().cgallery, {padding: 0, helpers: {overlay: {locked: false}}});
                 event.preventDefault();
             });
-           
-            //Integration with magnific popup plugin
+
+            //Интеграция с великолепным всплывающим плагином
             $('#xzoom-magnific').bind('click', function(event) {
                 var xzoom = $(this).data('xzoom');
                 xzoom.closezoom();
