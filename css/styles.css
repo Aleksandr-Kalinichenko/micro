@@ -501,7 +501,7 @@ div#final {
 }
 
 .reserveLink-container span {
-    background: -webkit-linear-gradient(left, transparent, darkturquoise);
+    background: -webkit-linear-gradient(left, transparent, red);
 }
 
 .reserveLink-container span:nth-of-type(1) {
