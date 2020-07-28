@@ -663,6 +663,37 @@ body.modal-active {
     background: #d4d3ce;
 }
 
+.modal__inner.psa-miniature.col--6of12-sm.col--6of12-l.text--center.no-active {
+    display: none;
+}
+
+.img-magnifier-container {
+    position: absolute;
+    width: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.img-magnifier-container img {
+    width: 100%;
+}
+
+.img-magnifier-container.active {
+    display: block;
+}
+
+.img-magnifier-glass {
+    position: absolute;
+    border: 3px solid #000;
+    border-radius: 50%;
+    cursor: none;
+    /*Set the size of the magnifier glass:*/
+    width: 100px;
+    height: 100px;
+}
+
 body.modal-active.final-img {
     background: #d4d3ce;
 }
