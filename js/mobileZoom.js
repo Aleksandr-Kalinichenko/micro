@@ -18,8 +18,8 @@ function magnify(imgID, zoom) {
 	h = glass.offsetHeight / 2;
 
 	/*виконати функцію, коли хтось переміщує скло лупи над зображенням:*/
-	glass.addEventListener("mousemove", moveMagnifier);
-	img.addEventListener("mousemove", moveMagnifier);
+	// glass.addEventListener("mousemove", moveMagnifier);
+	// img.addEventListener("mousemove", moveMagnifier);
 
 	/*а також для сенсорних екранів:*/
 	glass.addEventListener("touchmove", moveMagnifier);
