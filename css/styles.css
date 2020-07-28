@@ -648,6 +648,10 @@ body.modal-active {
     }
 } */
 
+.xzoom-containerWrap.no-active {
+    display: none;
+}
+
 .xzoom-container {
     position: relative;
     z-index: 999;
@@ -661,6 +665,29 @@ body.modal-active {
 .xzoom-lens {
     z-index: 999;
     background: #d4d3ce;
+}
+
+.img-magnifier-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    display: none;
+}
+
+.img-magnifier-container.active {
+    display: inline-block;
+}
+
+.img-magnifier-glass {
+    position: absolute;
+    border: 3px solid #000;
+    border-radius: 50%;
+    cursor: none;
+    /*Set the size of the magnifier glass:*/
+    width: 100px;
+    height: 100px;
 }
 
 body.modal-active.final-img {
