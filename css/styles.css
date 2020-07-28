@@ -977,6 +977,9 @@ table.woocommerce-table.woocommerce-table--order-details.shop_table.order_detail
 .page__row {
     margin: 10vh auto 0 auto;
 }
+.page__row.marginNone {
+    margin: 0;
+}
 .page__cell{
     max-width: 1115px;
     margin: 0 auto;
