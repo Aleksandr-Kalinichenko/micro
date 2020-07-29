@@ -481,17 +481,25 @@ div#final {
     border-radius: 2px;
 }
 
+.reserveLink-wrap {
+    transition: all 300ms ease;
+}
+
+.reserveLink-wrap:hover {
+    box-shadow: 5px 5px 20px #333333;
+}
+
 .reserveLink-container:hover span:nth-of-type(1) {
-    animation: run 1s linear 0s infinite;
+    /*animation: run 1s linear 0s infinite;*/
 }
 .reserveLink-container:hover span:nth-of-type(2) {
-    animation: run2 1s linear .4s infinite;
+    /*animation: run2 1s linear .4s infinite;*/
 }
 .reserveLink-container:hover span:nth-of-type(3) {
-    animation: run3 1s linear 0s infinite;
+    /*animation: run3 1s linear 0s infinite;*/
 }
 .reserveLink-container:hover span:nth-of-type(4) {
-    animation: run4 1s linear .4s infinite;
+    /*animation: run4 1s linear .4s infinite;*/
 }
 
 .reserveLink {}
@@ -1309,6 +1317,24 @@ table.woocommerce-table.woocommerce-table--order-details.shop_table.order_detail
 .card-weiht {
     margin-top: 21rem;
 }
+
+#toggleMaps.active,
+#toggleMaps.active i {
+    color: #a23400;
+}
+
+#oneMap.no-active {
+    display: none;
+}
+
+#twoMap.active {
+    display: block;
+}
+
+#twoMap {
+    display: none;
+}
+
 /*slider*/
 .icon-cards {
     position: relative;
