@@ -484,9 +484,7 @@ $(function () {
 	$('#scene-canvas').click(function() {
 		function scrollWhenClick () {
 			if (window.pageYOffset === 0 || window.pageYOffset === 1000 || window.pageYOffset === 2000) {
-				console.log(clickCounter);
 				clickCounter += clickCounter;
-				console.log(clickCounter);
 				$('html,body').animate({
 							scrollTop: body.scrollTop()+clickCounter},
 						'slow');
