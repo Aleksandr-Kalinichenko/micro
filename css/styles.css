@@ -1318,6 +1318,10 @@ table.woocommerce-table.woocommerce-table--order-details.shop_table.order_detail
     margin-top: 21rem;
 }
 
+#toggleMaps {
+    cursor: pointer;
+}
+
 #toggleMaps.active,
 #toggleMaps.active i {
     color: #a23400;
