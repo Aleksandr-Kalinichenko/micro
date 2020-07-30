@@ -489,11 +489,17 @@ $(function () {
 							scrollTop: body.scrollTop()+clickCounter},
 						'slow');
 
-				setTimeout(() => {
-						if (clickCounter === 4000 || window.pageYOffset === 0) {
-							clickCounter = 500;
-						}
-				}, 50);
+				if (document.documentElement.clientWidth < 640) {
+					setTimeout(resetCounter, 5);
+				} else {
+					setTimeout(resetCounter, 50);
+				}
+				
+				function resetCounter () {
+					if (clickCounter === 4000 || window.pageYOffset === 0) {
+						clickCounter = 500;
+					}
+				}
 			}
 		}
 

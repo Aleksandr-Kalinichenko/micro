@@ -209,7 +209,7 @@ function scrollTo(id,modal){
     else{
         speed = speed/2;
         TweenMax.to(nodes.window,speed,{
-            scrollTo:{y:targetZ},
+            scrollTo:{y:targetZ+1},
             onStart:function(){$.publish('/closeAll');},
             onComplete:function(){ if(modal){
             $.publish('/modals/show',[modal]);}}.bind(modal)});
