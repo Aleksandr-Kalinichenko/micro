@@ -1023,11 +1023,35 @@ table.woocommerce-table.woocommerce-table--order-details.shop_table.order_detail
 .img{
     width: 100%;
 }
+.section__info-block1,
+.section__info-block2,
+.section__info-block3,
+.section__info-blockWrap,
+.section__info-block6 {
+    position: relative;
+}
+.section__info-blockWrap {
+    grid-area: 2 / 2 / 4 / 3;
+    height: 413px;
+}
+.section__info-blockWrap.one {
+    grid-area: 2 / 1 / 4 / 3;
+}
+.onceMore,
+.twoMore {
+    position: absolute;
+}
+.onceMore {
+    bottom: -30px;
+}
+.twoMore {
+    bottom: -25px;
+}
 .page__cell.parentElement {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: 40px;
-    grid-row-gap: 20px;
+    grid-column-gap: 30px;
+    grid-row-gap: 40px;
     margin-bottom: 4rem;
 }
 .section5__headline{
@@ -1089,16 +1113,10 @@ table.woocommerce-table.woocommerce-table--order-details.shop_table.order_detail
             justify-content: space-between;
     height: 165px;
 }
-.section__info-block4 {
-    grid-area: 2 / 2 / 4 / 3;
-    height: 390px;
-    overflow-y: scroll;
-}
+.section__info-block4,
 .section__info-block5 {
-    grid-area: 2 / 1 / 4 / 2;
-    height: 390px;
     overflow-y: scroll;
-    position: relative;
+    height: 100%;
 }
 .section__info-block6 {
     grid-area: 3 / 3 / 4 / 5;
