@@ -1098,6 +1098,7 @@ table.woocommerce-table.woocommerce-table--order-details.shop_table.order_detail
     grid-area: 2 / 1 / 4 / 2;
     height: 390px;
     overflow-y: scroll;
+    position: relative;
 }
 .section__info-block6 {
     grid-area: 3 / 3 / 4 / 5;
@@ -1251,10 +1252,15 @@ table.woocommerce-table.woocommerce-table--order-details.shop_table.order_detail
 .block__left-img{
     /* width: 7.25rem; */
     width: 15.25rem;
+    position: fixed;
 }
 .block__left-text{
     /* width: 7.87rem; */
     width: 14.87rem;
+    padding-top: 140px;
+}
+.block__left-text.bigPadd {
+    padding-top: 174px;
 }
 .block5-link{
     margin-top: 0.3rem;
