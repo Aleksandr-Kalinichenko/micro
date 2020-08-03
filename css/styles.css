@@ -1115,7 +1115,6 @@ table.woocommerce-table.woocommerce-table--order-details.shop_table.order_detail
 }
 .section__info-block4,
 .section__info-block5 {
-    overflow-y: scroll;
     height: 100%;
 }
 .section__info-block6 {
@@ -1276,6 +1275,8 @@ table.woocommerce-table.woocommerce-table--order-details.shop_table.order_detail
     /* width: 7.87rem; */
     width: 14.87rem;
     padding-top: 140px;
+    overflow-y: auto;
+    height: 100%;
 }
 .block__left-text.bigPadd {
     padding-top: 174px;
