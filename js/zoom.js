@@ -1,3 +1,4 @@
+var permissionClickAnywhere = true;
 var zoom=(function($) {
 
     var selectors = {
@@ -208,11 +209,15 @@ function scrollTo(id,modal){
     }
     else{
         speed = speed/2;
+        permissionClickAnywhere = !permissionClickAnywhere;
         TweenMax.to(nodes.window,speed,{
             scrollTo:{y:targetZ+1},
             onStart:function(){$.publish('/closeAll');},
             onComplete:function(){ if(modal){
             $.publish('/modals/show',[modal]);}}.bind(modal)});
+        setTimeout(() => {
+            permissionClickAnywhere = !permissionClickAnywhere;
+        }, 100);
     }
 }
 
@@ -417,10 +422,10 @@ if(x >= btn_x && x <= btn_x + btn_width) {
 			// $('body').css('cursor', 'pointer');
 		} else {
 			$('body').css('cursor', 'auto');
-		}
+        }
 	} else {
 		$('body').css('cursor', 'auto');
-    }
+}
 
 return target;
 }
