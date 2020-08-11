@@ -490,7 +490,8 @@ div#final {
     height: 120%;
     left: -10%;
     transform: skewX(15deg);
-    z-index: -1;
+    z-index: 3;
+    cursor: pointer;
 }
 
 .reserveLink-wrap:hover .reserveLink__subText {
@@ -515,6 +516,7 @@ div#final {
     opacity: 0;
     cursor: pointer;
     user-select: unset;
+    z-index: 4;
 }
 
 .reserveLink-container:hover span:nth-of-type(1) {
