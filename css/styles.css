@@ -1627,13 +1627,13 @@ table.woocommerce-table.woocommerce-table--order-details.shop_table.order_detail
 
 @media (max-height: 700px) {
     .reserveLink-wrap {
-        bottom: 10%;
+        bottom: 18%;
     }
 }
 
 @media (max-height: 500px) {
     .reserveLink-wrap {
-        bottom: 8%;
+        bottom: 14%;
         width: 130px;
         height: 30px;
     }

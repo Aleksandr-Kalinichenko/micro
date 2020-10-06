@@ -38,7 +38,7 @@ var zoom=(function($) {
             ['img1-1.jpg', [0, 0, 2000], 5.0],
             //['vents.png',[0,-0.37,1300],2.85,0,true],
             ['ps-scope.png', [-0.70, 0.70, 510], 0.85, 0, true],
-            ['welcome.png', [0, 0.25, 150], 0.3]/*,*/
+            ['welcome.png', [0, 0.15, 250], 0.3]/*,*/
             // ['btn.png',[0,0.45,100],0.15]
             //['book2.png',[0,0,0],1,[460,490,true]],
             //['book-logo.png',[0,0,0],1,[460,490,true]]
@@ -55,11 +55,12 @@ var zoom=(function($) {
 
 
             //  ['Путь.png','Название',false,false,[положение по х, положение по у, положение по z, положение по х (mobile), положение по y (mobile)]],
-            // ['start.png',undefined,true,false,[0.08,0.14,-1,-0.04,0.24],'about'],
+            ['start.png',undefined,true,false,[0.08,0.14,-1,-0.04,0.24],'about'],
             ['about.png', 'about', true, true, [-0.5, 0, 500, -0.30, -0.2]],
             ['team.png', 'team', false, false, [0.5, 0, 1000, 0.30, -0.1]],
             ['attractions.png', 'attractions', true, false, [-0.55, -0.13, 1500, -0.27, 0.25]],
-            ['contact.png', 'contact', false, true, [0.35, -0.18, 1990, 0.20, 0.14]]],
+            // ['contact.png', 'contact', false, true, [0.35, -0.18, 1990, 0.20, 0.14]]
+        ],
         dimensions = {
             fov: 500,
             totalHeight: 2190,
@@ -84,10 +85,10 @@ if (document.documentElement.clientWidth <= 800) {
     points = [
         //  ['Путь.png','Название',false,false,[положение по х, положение по у, положение по z, положение по х (mobile), положение по y (mobile)]],
         // ['start.png',undefined,true,false,[0.08,0.14,-1,-0.04,0.24],'about'],
-        ['about.png','about',true,true,[-0.5,0,500,-0.30,-0.2]],
-        ['team.png','team',false,false,[0.5,0,500,0.30,-0.2]],
-        ['attractions.png','attractions',true,false,[-0.55,-0.13,800,-0.27,0.1]],
-        ['contact.png','contact',false,true,[0.35,-0.18,800,0.27,0.1]]
+        ['about.png','about',true,true,[-0.5,0,500,-0.30,-0.4]],
+        ['team.png','team',false,false,[0.5,0,500,0.30,-0.4]],
+        ['attractions.png','attractions',true,false,[-0.55,-0.13,800,-0.27,-0.1]],
+        ['contact.png','contact',false,true,[0.35,-0.18,800,0.27,-0.1]]
     ];
     content = {
         'start': [0.3, 0.3, 0],
